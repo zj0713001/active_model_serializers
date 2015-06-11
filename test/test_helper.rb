@@ -19,9 +19,9 @@ class Foo < Rails::Application
     config.active_support.test_order = :random
     config.logger = Logger.new(nil)
     ActionController::Base.cache_store = :memory_store
+    ActionController::Base.cache_store.clear
   end
 end
-ActionController::Base.cache_store.clear
 Foo.initialize!
 
 require 'fixtures/poro'
