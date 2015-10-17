@@ -88,7 +88,7 @@ class UserSerializer < ActiveModel::Serializer
 end
 
 class UserInfoSerializer < ActiveModel::Serializer
-  has_one :user
+  has_one :user, serializer: UserSerializer
 end
 
 class ProfileSerializer < ActiveModel::Serializer
@@ -108,6 +108,13 @@ end
 
 class PostSerializer < ActiveModel::Serializer
   attributes :title, :body
+
+  def title
+    keyword = serialization_options[:highlight_keyword]
+    title = object.read_attribute_for_serialization(:title)
+    title = title.gsub(keyword,"'#{keyword}'") if keyword
+    title
+  end
 
   has_many :comments
 end

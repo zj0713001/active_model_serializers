@@ -213,8 +213,8 @@ module ActionController
     class LowerCamelWoRootSerializerTest < ActionController::TestCase
       class WebLogController < ActionController::Base
         def render_without_root
-          render json: WebLog.new({name: 'Name 1', display_name: 'Display Name 1'}), 
-                 root: false, 
+          render json: WebLog.new({name: 'Name 1', display_name: 'Display Name 1'}),
+                 root: false,
                  serializer: WebLogLowerCamelSerializer
         end
       end
@@ -231,9 +231,9 @@ module ActionController
     class LowerCamelArrayWoRootSerializerTest < ActionController::TestCase
       class WebLogController < ActionController::Base
         def render_array_without_root
-          render json: [WebLog.new({name: 'Name 1', display_name: 'Display Name 1'}), 
-                        WebLog.new({name: 'Name 2', display_name: 'Display Name 2'})], 
-                 root: false, 
+          render json: [WebLog.new({name: 'Name 1', display_name: 'Display Name 1'}),
+                        WebLog.new({name: 'Name 2', display_name: 'Display Name 2'})],
+                 root: false,
                  each_serializer: WebLogLowerCamelSerializer
         end
       end
